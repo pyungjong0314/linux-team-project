@@ -1,6 +1,13 @@
 #!/bin/bash
 declare -i num
 
+# 리스트
+IFS_backup="$IFS"
+IFS=$'\n'
+ssh_list=(`cat ssh.txt`)
+file="./ssh.txt"
+IFS="$IFS_backup"
+
 #문자열 선언
 
 str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
@@ -28,7 +35,7 @@ echo "$str4"
 print_list(){
 for ((i=0; i<9; i++)); do
   num=${num}+1
-  echo "=   " ${num}")                                                                                           ="
+  echo "=   " ${num}") ${ssh_list[i]}"
 done
 
 for ((i=0; i<3; i++)); do
@@ -52,14 +59,14 @@ echo "$str1"
 
 array=()
 for ((i=1; i<10; i++)); do
-  array[$i]="=   ${i})                                                                                            ="
+  array[$i]="=   ${i}) ${ssh_list[i-1]}"
 done
 
 array_1=()
 current_index=0
 
 for ((i=1; i<10; i++)); do
-  array_1[$i]="=  >> ${i})                                                                                          ="
+  array_1[$i]="=  >> ${i}) ${ssh_list[i-1]}"
 done
 
 
