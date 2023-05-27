@@ -1,8 +1,8 @@
 HEIGHT=20
 WIDTH=80
 CHOICE_HEIGHT=20 # 리스트 출력 개수
-BACKTITLE="Backtitle here"
-TITLE="Buff dev server instances"
+BACKTITLE="USSH"
+TITLE="Server instances"
 MENU="Choose one of the following options:"
 
 OPTIONS=(1 "kpop printshop front server (i-091389f09324e6256)"

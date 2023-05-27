@@ -14,8 +14,9 @@ str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 str2="=                                                                                                 ="
 str3="=                                          << Ussh >>                                             ="
 str4="=   List                                                                                          ="
-str5="=        [등록하기]                           [수정하기]                         [삭제하기]       ="
+str5="=                 [등록하기]                                                 [삭제하기]           ="
 str6="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
+str7="                                                           # 접속을 원하면 ctrl + 'S'를 입력하세요."
 
 # 상자 함수
 
@@ -30,52 +31,65 @@ echo "$str2"
 echo "$str4"
 }
 
-# 리스트 번호 출력 함수
+# 리스트 배열 선언
 
-print_list(){
-for ((i=0; i<9; i++)); do
-  num=${num}+1
-  echo "=   " ${num}") ${ssh_list[i]}"
+list=()
+for ((i=1; i<20; i++)); do
+  list[$i]="=   $((i))) ${ssh_list[i-1]}"
 done
 
-for ((i=0; i<3; i++)); do
-    echo "$str2"
-done
+current_index=0
+
+
+# 스크롤 리스트 출력 하위 함수
+print_list() {
+  start_index=$1
+  end_index=$2
+
+  for ((i=start_index+1; i< end_index + 2; i++)); do
+    echo "${complete_array[$i]}"
+  done
 }
+
 
 
 # 시작화면 출력
 
 print_box 0
-print_list 0
+
+for ((i=1; i<10; i++)); do
+  echo "${list[$i]}"
+done
+
 echo "$str6"
 echo "$str2"
 echo "$str5"
 echo "$str2"
 echo "$str1"
+echo "$str7"
 
 
 # 리스트 선택
-
 array=()
-for ((i=1; i<10; i++)); do
+for ((i=1; i<20; i++)); do
   array[$i]="=   ${i}) ${ssh_list[i-1]}"
 done
 
-array_1=()
+# >>표시가 있는 리스트 선언
+arrow_array=()
 current_index=0
 
-for ((i=1; i<10; i++)); do
-  array_1[$i]="=  >> ${i}) ${ssh_list[i-1]}"
+for ((i=1; i<20; i++)); do
+  arrow_array[$i]="=  >> ${i}) ${ssh_list[i-1]}"
 done
+
 
 
 
 # 기능 배열 정의
-str5_1="=      >>[등록하기]                           [수정하기]                         [삭제하기]       ="
-str5_2="=        [등록하기]                         >>[수정하기]                         [삭제하기]       ="
-str5_3="=        [등록하기]                           [수정하기]                       >>[삭제하기]       ="
-array2=("$str5_1" "$str5_2" "$str5_3")
+str5_1="=               >>[등록하기]                                                 [삭제하기]           ="
+str5_2="=                 [등록하기]                                               >>[삭제하기]           ="
+array2=("$str5_1" "$str5_2")
 current_index2=0
 
 
@@ -88,7 +102,7 @@ function move_up {
 
 # 아래쪽 방향키로 인덱스 1 증가
 function move_down {
-  if (( current_index < ${#array1[@]} + 1 )); then
+  if (( current_index < ${#complete_array[@]} + 1 )); then
     ((current_index=current_index+1))
   fi
 }
@@ -128,38 +142,42 @@ while true; do
       ;;
   esac
 
-# 선택 리스트 배열 정의
-array1=()
-for ((i=1; i<10; i++)); do
-  array1[$i]=${array[$i]}
+# 선택 표시가 있는 리스트 정의
+complete_array=()
+for ((i=1; i<20; i++)); do
+  complete_array[$i]=${array[$i]}
 done
-array1[$current_index]=${array_1[$current_index]}
+complete_array[$current_index]=${arrow_array[$current_index]}
 
-# 선택 리스트 출력 함수
-print_list2(){
-for ((i=0; i<9; i++)); do
-  num=${num}+1
-  echo "${array1[$num]}"
-done
+# 선택 리스트 + 스크롤 출력 함수
+print_scrollable_list() {
+  total_items=${#list[@]}
+  items_per_page=9
 
-for ((i=0; i<3; i++)); do
-    echo "$str2"
-done
+  if (( current_index < items_per_page )); then
+    start_index=0
+    end_index=$(( items_per_page - 1 ))
+  else
+    start_index=$(( current_index - items_per_page + 1 ))
+    end_index=$(( current_index ))
+  fi
+
+  print_list "$start_index" "$end_index"
 
   echo "$str6"
   echo "$str2"
-  stty -echo
-}  
+
+}
 
 # 리스트 선택 출력
 clear
 print_box 0
-print_list2
+print_scrollable_list
 echo "${array2[$current_index2]}"
 echo "$str2"
 echo "$str1"
+echo "$str7"
 done
-stty -echo
 
 
 # 화살표 방향키 입력 받기
@@ -186,8 +204,9 @@ while true; do
 # 방향키 박스 출력
 clear
 print_box 0
-print_list2
+print_scrollable_list
 echo "${array2[$current_index2]}"
   echo "$str2"
   echo "$str1"
+  echo "$str7"
 done
