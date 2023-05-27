@@ -197,10 +197,17 @@ while true; do
             move_left;;
         esac
       fi;;
+    #general key input
+    "s")
+      ssh=${ssh_list[$current_index-1]}
+      export ${ssh}
+      export ${current_index}
+      . ./connect.sh
+      break;;
     *)
       ;;
   esac
-  
+
 # 방향키 박스 출력
 clear
 print_box 0
@@ -210,3 +217,5 @@ echo "${array2[$current_index2]}"
   echo "$str1"
   echo "$str7"
 done
+
+. register.sh
