@@ -218,4 +218,6 @@ echo "${array2[$current_index2]}"
   echo "$str7"
 done
 
-. register.sh
+if [[ ${current_index2} -eq 0 ]]; then
+  . register.sh
+fi
