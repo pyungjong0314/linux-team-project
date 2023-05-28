@@ -206,8 +206,7 @@ while true; do
     "s")
       ssh=""
       ssh=${ssh_list[$current_index-1]}
-      export ${ssh}
-      . ./connect.sh
+      . ./connect.sh ${ssh}
       break;;
     *)
       ;;
