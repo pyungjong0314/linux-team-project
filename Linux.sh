@@ -187,6 +187,8 @@ while true; do
     "") 
       if [[ ${current_index2} -eq 0 ]]; then
         . register.sh
+      elif [[ ${current_index2} -eq 1 ]]; then
+        . delete.sh
       fi
       break;;
     $'\x1b')
