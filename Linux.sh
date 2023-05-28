@@ -185,6 +185,9 @@ while true; do
   read -n 1 key
   case "$key" in
     "") 
+      if [[ ${current_index2} -eq 0 ]]; then
+        . register.sh
+      fi
       break;;
     $'\x1b')
       read -n 1 -t 0.01 -s key
@@ -199,9 +202,9 @@ while true; do
       fi;;
     #general key input
     "s")
+      ssh=""
       ssh=${ssh_list[$current_index-1]}
       export ${ssh}
-      export ${current_index}
       . ./connect.sh
       break;;
     *)
@@ -217,7 +220,3 @@ echo "${array2[$current_index2]}"
   echo "$str1"
   echo "$str7"
 done
-
-if [[ ${current_index2} -eq 0 ]]; then
-  . register.sh
-fi
