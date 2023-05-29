@@ -36,3 +36,5 @@ for index in "${ssh_list[@]}";
 do 
     echo $index >> ${file}
 done
+
+. Linux.sh

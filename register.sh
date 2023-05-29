@@ -7,9 +7,9 @@ ssh_list=(`cat ssh.txt`)
 file="./ssh.txt"
 IFS="$IFS_backup"
 
-for index in "${ssh_list[@]}"; do
-    echo $index
-done
+# for index in "${ssh_list[@]}"; do
+#     echo $index
+# done
 
 declare -i num
 passport=""
@@ -17,23 +17,24 @@ passport=""
 while true; do
     read -p "등록하고 싶은 번호를 입력하시오(종료: -1 입력): " num
     echo $num
-    if [[ $num -gt 0 && $num -lt 10 ]]; then
+    if [[ $num -gt 0 && $num -lt 20 ]]; then
         read -p "등록하고자 하는 서버의 사용자명@SSH 주소를 작성해주십시오: " passport
         ssh_list[num-1]=${passport}
     elif [[ $num -eq -1 ]]; then
         break
     else
-        echo "리스트의 범위는 1~9입니다. 다시 입력해주세요."
+        echo "리스트의 범위는 1~19입니다. 다시 입력해주세요."
     fi
-
-    # 변경된 리스트 출력
-    echo "변경된 리스트:"
-    for index in "${ssh_list[@]}"; do 
-        echo $index
-    done
+    # # 변경된 리스트 출력
+    # echo "변경된 리스트:"
+    # for index in "${ssh_list[@]}"; do 
+    #     echo $index
+    # done
 done
 
 # 파일에 변경된 리스트 저장
 for index in "${ssh_list[@]}"; do 
     echo $index >> ${file}
 done
+
+. Linux.sh
