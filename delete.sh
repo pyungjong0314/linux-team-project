@@ -3,8 +3,11 @@
 IFS_backup="$IFS"
 IFS=$'\n'
 ssh_list=(`cat ssh.txt`)
+key_list=(`cat key.txt`)
+`rm -rf key.txt`
 `rm -rf ssh.txt`
 file="./ssh.txt"
+key_file="./key.txt"
 IFS="$IFS_backup"
 
 # for index in "${ssh_list[@]}"; do
@@ -19,7 +22,8 @@ while true; do
     if [[ $num -eq -1 ]]; then
         break
     elif [[ $num -gt 0 && $num -lt 20 ]]; then
-        unset ssh_list[num-1]
+        ssh_list[num-1]=null
+        key_list[num-1]=null
         echo "주소가 삭제되었습니다."
     else
         echo "리스트의 범위는 1~19입니다. 다시 입력해주세요."
@@ -35,6 +39,10 @@ done
 # 파일에 변경된 리스트 저장
 for index in "${ssh_list[@]}"; do 
     echo $index >> ${file}
+done
+
+for index in "${key_list[@]}"; do
+    echo $index >> ${key_file}
 done
 
 . Linux.sh
