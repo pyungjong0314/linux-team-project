@@ -5,7 +5,9 @@ declare -i num
 IFS_backup="$IFS"
 IFS=$'\n'
 ssh_list=(`cat ssh.txt`)
+key_list=(`cat key.txt`)
 file="./ssh.txt"
+key_file="./key.txt"
 IFS="$IFS_backup"
 
 #문자열 선언
@@ -204,9 +206,9 @@ while true; do
       fi;;
     #general key input
     "s")
-      ssh=""
       ssh=${ssh_list[$current_index-1]}
-      . ./connect.sh ${ssh}
+      key_path=${key_list[$current_index-1]}
+      . ./connect.sh ${ssh} ${key}
       break;;
     "g")
       . ./keygen.sh
