@@ -92,6 +92,3 @@ str5_1="=               >>[등록하기]                                        
 str5_2="=                 [등록하기]                                               >>[삭제하기]           ="
 array2=("$str5_1" "$str5_2")
 current_index2=0
-
-
-done
