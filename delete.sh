@@ -22,8 +22,8 @@ while true; do
     if [[ $num -eq -1 ]]; then
         break
     elif [[ $num -gt 0 && $num -lt 20 ]]; then
-        unset ssh_list[num-1]
-        unset key_list[num-1]
+        ssh_list[num-1]=null
+        key_list[num-1]=null
         echo "주소가 삭제되었습니다."
     else
         echo "리스트의 범위는 1~19입니다. 다시 입력해주세요."
