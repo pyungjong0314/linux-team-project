@@ -208,7 +208,7 @@ while true; do
     "s")
       ssh=${ssh_list[$current_index-1]}
       key_path=${key_list[$current_index-1]}
-      . ./connect.sh ${ssh} ${key}
+      . ./connect.sh ${ssh} ${key_path}
       break;;
     "g")
       . ./keygen.sh
