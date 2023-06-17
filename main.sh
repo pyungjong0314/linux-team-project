@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 문자열 선언
-str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 str2="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
 str3="= -                                                                                             - ="
 str4="= - uu                 *ssssssssss*          *ssssssssss* hh                                    - ="
@@ -16,7 +16,7 @@ str12="= -      *uuuuuuuuu*   *ssssssssss*            *sssssssssshhs*           
 str13="= -                                                                                             - ="
 str14="= -                                                                                             - ="
 str15="= -                                                                                             - ="
-str16="= -                                      [접속하기]                                         - ="
+str16_1="= -                                      [접속하기]                                         - ="
 str17="= -                                                                                             - ="
 str18="= -                                                                                             - ="
 str19="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
@@ -39,28 +39,19 @@ print_box() {
   echo "$str13"
   echo "$str14"
   echo "$str15"
-  echo "$str16"
+  echo "$1"
   echo "$str17"
   echo "$str18"
   echo "$str19"
   echo "$str20"
 }
 
-# 시작화면 출력
-print_box
-
 # 기능 배열 정의
 str16_1="=                                   [접속하기]                                            ="
 str16_2="=                                 >>[접속하기]                                            ="
-array2=("$str16_1" "$str16_2")
-current_index2=0
 
-# 엔터키로 인덱스 1 감소
-function move_up {
-  if (( current_index2 > 0 )); then
-    let "current_index2-=1"
-  fi
-}
+# 시작화면 출력
+print_box "$str16_1"
 
 # 화면 이동 함수
 function move_to_list {
@@ -74,30 +65,23 @@ function move_to_list {
 while true; do
   read -n 1 key
   case "$key" in
-    "")
-      if (( current_index2 == 1 )); then
-        move_to_list
-      else
-        current_index2=1
-      fi
+  "")
+   # 상자 출력
+    clear
+    print_box "$str16_2"
+    break
       ;;
-    $'\x1b')
-      read -n 1 -t 0.01 -s key
-      if [[ "$key" == "[" ]]; then
-        read -n 1 -t 0.01 -s key
-        case "$key" in
-          "A")
-            move_up;;
-          "B")
-            move_down;;
-        esac
-      fi;;
+  esac
+  
+  while true; do
+  read -n 1 key
+  case "$key" in
+  "")
+     clear
+    ./Linux.sh
+      ;;
+
     *)
       ;;
   esac
-  # 상자 출력
-  clear
-  print_box
-  echo "${array2[current_index2]}"
- 
 done
