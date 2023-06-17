@@ -4,15 +4,15 @@
 str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 str2="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
 str3="= -                                                                                             - ="
-str4="= - uu                 *ssssssssss*          *ssssssssss* hh                                    - ="
-str5="= - uu              ssss  uu     ssss    ssss           sshh                                    - ="
-str6="= - uu               ssss  uu     ssss    ssss            hhss                                  - ="
-str7="= - uu                 sssss                sssss         hh   *hhhhhhh*                        - ="
-str8="= -  uu                 uu  ssssssssss         ssssssssss hhh          hh                       - ="
-str9="= -  uu                uu          sssss               ssshhs            hh                     - ="
-str10="= -   uu              uu             ssss                shhss            hh                    - ="
-str11="= -    uu          ssss            ssss    ssss           hhss            hh                    - ="
-str12="= -      *uuuuuuuuu*   *ssssssssss*            *sssssssssshhs*            hh                    - ="
+str4="= - uu                    uu       *ssssssssss*         *ssssssssss*        hh                  - ="
+str5="= - uu                    uu    ssss         ssss    ssss           ssss    hh                  - ="
+str6="= - uu                    uu     ssss         ssss    ssss            ssss  hh                  - ="
+str7="= - uu                    uu       sssss                sssss               hh  *hhhhh*         - ="
+str8="= -  uu                  uu           ssssssssss           ssssssssss       hh hh      hh       - ="
+str9="= -  uu                 uu                    sssss                 sssss   hh          hh      - ="
+str10="= -   uu              uu                       ssss                  ssss  hh           hh     - ="
+str11="= -    uu          ss            ssss         ssss     ssss         ssss   hh           hh     - ="
+str12="= -      *uuuuuuuuu*                *ssssssssss*         *sssssssssss*     hh           hh     - ="
 str13="= -                                                                                             - ="
 str14="= -                                                                                             - ="
 str15="= -                                                                                             - ="
@@ -47,8 +47,8 @@ print_box() {
 }
 
 # 기능 배열 정의
-str16_1="=                                   [접속하기]                                                ="
-str16_2="=                                 >>[접속하기]                                                ="
+str16_1="=                                   [접속하기]                                                  ="
+str16_2="=                                 >>[접속하기]                                                  ="
 
 # 시작화면 출력
 print_box "$str16_1"
