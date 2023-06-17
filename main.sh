@@ -2,7 +2,7 @@
 
 # 문자열 선언
 str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-str2="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
+str2="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
 str3="= -                                                                                             - ="
 str4="= - uu                 *ssssssssss*          *ssssssssss* hh                                    - ="
 str5="= - uu              ssss  uu     ssss    ssss           sshh                                    - ="
@@ -16,7 +16,7 @@ str12="= -      *uuuuuuuuu*   *ssssssssss*            *sssssssssshhs*           
 str13="= -                                                                                             - ="
 str14="= -                                                                                             - ="
 str15="= -                                                                                             - ="
-str16="= -                                      [접속하기]                                           - ="
+str16="= -                                      [접속하기]                                         - ="
 str17="= -                                                                                             - ="
 str18="= -                                                                                             - ="
 str19="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
@@ -50,8 +50,8 @@ print_box() {
 print_box
 
 # 기능 배열 정의
-str16_1="=                                      [접속하기]                                          ="
-str16_2="=                                    >>[접속하기]                                          ="
+str16_1="=                                   [접속하기]                                            ="
+str16_2="=                                 >>[접속하기]                                            ="
 array2=("$str16_1" "$str16_2")
 current_index2=0
 
@@ -72,7 +72,7 @@ function move_to_list {
 
 # 화살표 방향키 입력 받기
 while true; do
-  read -rsn1 key
+  read -n 1 key
   case "$key" in
     "")
       if (( current_index2 == 1 )); then
@@ -82,9 +82,9 @@ while true; do
       fi
       ;;
     $'\x1b')
-      read -rsn2 -t 0.01 key
+      read -n 1 -t 0.01 -s key
       if [[ "$key" == "[" ]]; then
-        read -rsn1 -t 0.01 key
+        read -n 1 -t 0.01 -s key
         case "$key" in
           "A")
             move_up;;
@@ -99,4 +99,5 @@ while true; do
   clear
   print_box
   echo "${array2[current_index2]}"
+ 
 done
