@@ -2,7 +2,11 @@
 
 # 문자열 선언
 str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+<<<<<<< HEAD
 str2="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
+=======
+str2="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
+>>>>>>> c772b275e9ff2bcd6651cdb734eb480c81535da2
 str3="= -                                                                                             - ="
 str4="= - uu                 *ssssssssss*          *ssssssssss* hh                                    - ="
 str5="= - uu              ssss  uu     ssss    ssss           sshh                                    - ="
@@ -16,7 +20,11 @@ str12="= -      *uuuuuuuuu*   *ssssssssss*            *sssssssssshhs*           
 str13="= -                                                                                             - ="
 str14="= -                                                                                             - ="
 str15="= -                                                                                             - ="
+<<<<<<< HEAD
 str16="= -                                      [접속하기]                                           - ="
+=======
+str16="= -                                           [접속하기]                                         - ="
+>>>>>>> c772b275e9ff2bcd6651cdb734eb480c81535da2
 str17="= -                                                                                             - ="
 str18="= -                                                                                             - ="
 str19="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
@@ -50,8 +58,13 @@ print_box() {
 print_box
 
 # 기능 배열 정의
+<<<<<<< HEAD
 str16_1="=                                     [접속하기]                                          ="
 str16_2="=                                   >>[접속하기]                                          ="
+=======
+str16_1="=                                          [접속하기]                                          ="
+str16_2="=                                        >>[접속하기]                                          ="
+>>>>>>> c772b275e9ff2bcd6651cdb734eb480c81535da2
 array2=("$str16_1" "$str16_2")
 current_index2=0
 
@@ -99,4 +112,5 @@ while true; do
   clear
   print_box
   echo "${array2[current_index2]}"
+ 
 done
