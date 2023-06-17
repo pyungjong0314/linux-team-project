@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # 문자열 선언
-str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
-str2="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
+str1="= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
+str2="= - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ="
 str3="= -                                                                                             - ="
 str4="= - uu                 *ssssssssss*          *ssssssssss* hh                                    - ="
 str5="= - uu              ssss  uu     ssss    ssss           sshh                                    - ="
@@ -47,19 +47,11 @@ print_box() {
 }
 
 # 기능 배열 정의
-str16_1="=                                   [접속하기]                                            ="
-str16_2="=                                 >>[접속하기]                                            ="
+str16_1="=                                   [접속하기]                                                ="
+str16_2="=                                 >>[접속하기]                                                ="
 
 # 시작화면 출력
 print_box "$str16_1"
-
-# 화면 이동 함수
-function move_to_list {
-  clear
-  echo "화면을 Linux.sh로 이동"
-  ./Linux.sh
-  exit 0
-}
 
 # 화살표 방향키 입력 받기
 while true; do
@@ -71,14 +63,19 @@ while true; do
     print_box "$str16_2"
     break
       ;;
+
+    *)
+      ;;
   esac
+
+done
   
   while true; do
   read -n 1 key
   case "$key" in
   "")
      clear
-    ./Linux.sh
+    . ./Linux.sh
       ;;
 
     *)
